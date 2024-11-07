@@ -1,0 +1,12 @@
+<div  class="section flex flex-col py-8  items-center h-screen w-full px-16">
+
+  <div class="w-full flex justify-end items-end py-2">
+    <button class="p-2 border" (click)="generatePDF()">Dowload ticket</button>
+  </div>
+
+  <div id="pdfContent" class="h-fit mt-8">
+  <app-card [qrcodeContent]="registrationUrl"></app-card>
+  </div>
+
+
+</div>

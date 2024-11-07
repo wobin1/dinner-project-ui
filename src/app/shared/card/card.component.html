@@ -1,0 +1,43 @@
+<div class="card mx-auto w-full max-w-[450px] lg:max-w-[800px] flex flex-col md:flex-row lg:flex-row lg:gap-4 justify-center items-center h-auto lg:max-h-[350px] p-4 px-8 rounded-md border shadow-lg">
+  <div class="w-full basis-[70%]">
+      <div class="heading w-full flex flex-col py-4 gap-1">
+          <div class="title text-5xl font-bold text-start text-gray-800">
+              Youth Fellowship
+          </div>
+
+          <div class="subtitle flex justify-between mt-2 w-full lg:max-w-[400px]">
+              <span class="sub-title text-xl  text-gray-800">LYC Ung/Boro</span>
+              <span class="sub-title text-xl  text-gray-800">Dinner Night</span>
+          </div>
+      </div>
+
+      <div class="content mt-4 w-full">
+          <div class="details grid grid-cols-2 gap-4">
+              <div class="flex flex-col">
+                  <div class="label text-gray-800 font-semibold">Name:</div>
+                  <div class="venue text-gray-500">Nathaniel Musa</div>
+              </div>
+
+              <div class="label flex flex-col">
+                  <div class="label text-gray-800 font-semibold">Date:</div>
+                  <div class="venue text-gray-500">7 febuary 2024</div>
+              </div>
+
+              <div class="label flex flex-col ">
+                  <div class="label text-gray-800 font-semibold">Venue:</div>
+                  <div class="venue text-gray-500">1st ECWA church Hause Ung/boro</div>
+              </div>
+
+              <div class="label flex flex-col ">
+                  <div class="label text-gray-800 font-semibold">Dress code:</div>
+                  <div class="venue text-gray-500">Black and white</div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="w-full flex justify-center basis-[30%]">
+    <qrcode [qrdata]="qrcodeContent" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+</div>

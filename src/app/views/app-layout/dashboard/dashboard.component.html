@@ -1,0 +1,227 @@
+<div class="section px-4 md:px-16 lg:px-16">
+  <!-- header section -->
+
+
+  <!-- summary section -->
+  <div class="summary p-6 flex flex-col md:flex-col lg:flex-row gap-6 bg-gray-100/65">
+    <div class="layout-1 basis-1/2">
+      <h4 class="text-lg font-medium text-gray-800">Referal Summary</h4>
+
+      <div class="flex gap-4 mt-4 lg:flex-row md:flex-col flex-col bg-gray-100/65">
+        <div class="flex flex-col gap-2 bg-white px-6 py-6 basis-1/2">
+          <span class="text-sm text-gray-600">Total pharmacies</span>
+          <div class="flex justify-between items-center">
+            <span *ngIf="metrics" class="text-xl font-bold text-gray-800">{{metrics?.data.total_pharmacy}}</span>
+            <span *ngIf="!metrics">
+              <i  class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+            </span>
+            <span class="text-xs cursor-pointer hover:text-gray-500 active:scale-95 text-gray-600 flex items-center gap-2">
+              view detail
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2 bg-white px-6 py-6 basis-1/2">
+          <span class="text-sm text-gray-600">Total referals</span>
+          <div class="flex justify-between items-center">
+            <span *ngIf="metrics" class="text-xl font-bold text-gray-800">{{metrics?.data.total_referals}}</span>
+            <span *ngIf="!metrics">
+              <i  class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+            </span>
+            <span class="text-xs cursor-pointer hover:text-gray-500 active:scale-95 text-gray-600 flex items-center gap-2">
+              view detail
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+              </span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider hidden md:hidden lg:block border-l h-[150px]"></div>
+
+    <div class="layout-2 basis-1/2">
+      <h4 class="text-lg font-medium text-gray-800">Track summary</h4>
+
+      <div class="flex gap-4 mt-4 lg:flex-row md:flex-col flex-col">
+        <div class="flex flex-col gap-2 bg-white px-6 py-6 basis-1/2">
+          <span class="text-sm text-gray-600">Visited lab</span>
+          <div class="flex justify-between items-center">
+            <span *ngIf="metrics"  class="text-xl font-bold text-gray-800">{{metrics?.data.total_visited}}</span>
+            <span *ngIf="!metrics">
+              <i  class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+            </span>
+            <span class="text-xs cursor-pointer hover:text-gray-500 active:scale-95 text-gray-600 flex items-center gap-2">
+              view detail
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2 bg-white px-6 py-6 basis-1/2">
+          <span class="text-sm text-gray-600">Paid for test</span>
+          <div class="flex justify-between items-center">
+            <span *ngIf="metrics" class="text-xl font-bold text-gray-800">{{metrics?.data.successfull}}</span>
+            <span *ngIf="!metrics">
+              <i  class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+            </span>
+            <span class="text-xs cursor-pointer hover:text-gray-500 active:scale-95 text-gray-600 flex items-center gap-2">
+              view detail
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+              </span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Inventory tracker section -->
+  <div class="summary flex flex-col md:flex-col lg:flex-row gap-6 mt-6">
+    <div class="layout-1 basis-[60%] p-6 bg-gray-100/65">
+      <div class="flex gap-4 justify-between ">
+        <h4 class="text-lg font-medium text-gray-800">Recent referal</h4>
+        <span class="text-xs cursor-pointer hover:text-gray-500 active:scale-95 text-gray-600 flex items-center gap-2">
+          view detail
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </span>
+        </span>
+      </div>
+
+      <h5 class=" text-gray-500 mt-1 mb-8">This month ({{metrics?.data.current_month_referal_count}})</h5>
+
+      <ng-container *ngFor="let item of recentReferals">
+      </ng-container>
+
+      <ng-container *ngIf="recentReferals.length<=0 && pageLoading">
+        <div class="w-full flex justify-center items-center h-[150px]">
+          <app-spinner></app-spinner>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="recentReferals.length<=0 && !pageLoading">
+        <div class="max-h[150px]">
+        </div>
+      </ng-container>
+
+      <h5 class=" text-gray-500 mt-8 mb-6">{{currentMonth}} ({{metrics?.data.current_month_referal_count}}) </h5>
+
+
+
+    </div>
+
+
+    <div class="layout-2 basis-[40%] bg-gray-100/65">
+      <div class="flex gap-4 justify-between p-6">
+        <h4 class="text-lg font-medium text-gray-800">Referal success</h4>
+        <span class="text-xs cursor-pointer hover:text-gray-500 active:scale-95 text-gray-600 flex items-center gap-2">
+          view detail
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </span>
+        </span>
+      </div>
+
+      <div class="chart relative flex items-center w-full justify-center px-6">
+        <!-- <div class="card flex justify-content-center">
+          <p-chart type="doughnut" [data]="data" [options]="options" />
+        </div> -->
+
+        <div class="absolute flex flex-col items-center">
+          <span class="label">Total referal</span>
+          <span *ngIf="metrics" class="label font-bold text-2xl">{{metrics?.data.total_referals}}</span>
+          <span *ngIf="!metrics">
+            <i  class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+          </span>
+        </div>
+
+      </div>
+
+      <!-- chart detail section -->
+      <div class=" px-6 py-8">
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-between">
+            <div class="flex items-center gap-4">
+              <div class="box w-4 h-4 bg-gray-600"></div>
+              <span class="text-gray-500">Successfull</span>
+            </div>
+
+            <span *ngIf="metrics" class="text-gray-800">{{metrics?.data.successfull}}</span>
+            <span *ngIf="!metrics">
+              <i  class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+            </span>
+          </div>
+
+          <div class="flex justify-between ">
+            <div class="flex items-center gap-4">
+              <div class="box w-4 h-4 bg-gray-900"></div>
+              <span class="text-gray-500">Unsuccessfull</span>
+            </div>
+
+            <span *ngIf="metrics" class="text-gray-800">{{metrics?.data.unsuccessfull}}</span>
+            <span *ngIf="!metrics">
+              <i  class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+            </span>
+          </div>
+
+        </div>
+     </div>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- Top selling section  -->
+  <!-- <div class="summary p-6 flex gap-6 bg-gray-100/65 mt-6 w-full">
+    <div class="layout-1 w-full">
+      <h4 class="text-lg font-medium text-gray-800 capitalize">Top refering pharmacy</h4>
+
+      <div class="products grid md:grid lg:grid md:grid-cols-2 lg:grid-cols-4 gap-4 w-full mt-8">
+        <ng-container *ngFor="let item of products">
+        <app-product-card fullName={{item.name}} email={{item.total_referals}}></app-product-card>
+        </ng-container>
+      </div>
+
+      <div class="flex w-full justify-end mt-8">
+        <app-pagination></app-pagination>
+      </div>
+
+
+    </div>
+
+
+
+  </div> -->
+
+
+
+
+
+
+
+</div>
