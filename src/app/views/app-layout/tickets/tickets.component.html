@@ -1,15 +1,19 @@
-<div class="section py-10 ">
 
-  <div class="flex flex-col justify-center gap-8 overflow-y-auto items-center py-8 h-screen w-full">
+<app-header></app-header>
 
-    <div class="card mx-auto w-full max-w-[450px] lg:max-w-[800px] flex flex-col md:flex-row lg:flex-row lg:gap-4 justify-center items-center h-auto lg:max-h-[350px] p-4 py-8 px-8 rounded-md border shadow-lg">
+
+<div class="section py-8">
+  <div class="flex flex-col gap-8 overflow-y-auto py-8 h-screen w-full">
+
+    <ng-container *ngFor="let guest of Guests">
+      <div class="card mx-auto w-full max-w-[450px] md:max-w-[800px] lg:max-w-[800px] flex flex-col md:flex-row lg:flex-row lg:gap-4 justify-center items-center h-auto lg:max-h-[350px] p-4 py-8 px-8 rounded-md border shadow-lg">
         <div class="w-full basis-[70%]">
             <div class="heading w-full flex flex-col py-4 gap-1">
                 <div class="title text-5xl font-bold text-start text-gray-800">
                     Youth Fellowship
                 </div>
 
-                <div class="subtitle flex justify-between mt-2 w-full lg:max-w-[400px]">
+                <div class="subtitle flex justify-between mt-2 w-full md:w-full lg:max-w-[400px]">
                     <span class="sub-title text-xl  text-gray-800">LYC Ung/Boro</span>
                     <span class="sub-title text-xl  text-gray-800">Dinner Night</span>
                 </div>
@@ -19,12 +23,12 @@
                 <div class="details grid grid-cols-2 gap-4">
                     <div class="flex flex-col">
                         <div class="label text-gray-800 font-semibold">Name:</div>
-                        <div class="venue text-gray-500">Nathaniel Musa</div>
+                        <div class="venue text-gray-500">{{guest.full_name}}</div>
                     </div>
 
                     <div class="label flex flex-col">
                         <div class="label text-gray-800 font-semibold">Date:</div>
-                        <div class="venue text-gray-500">7 febuary 2024</div>
+                        <div class="venue text-gray-500">7 Dec 2024</div>
                     </div>
 
                     <div class="label flex flex-col ">
@@ -42,142 +46,10 @@
 
 
         <div class="w-full flex justify-center basis-[30%]">
-          <qrcode [qrdata]="registrationUrl" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+          <qrcode qrdata={{guest.qrcode}} [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
         </div>
     </div>
+    </ng-container>
 
-    <div class="card mx-auto w-full max-w-[450px] lg:max-w-[800px] flex flex-col md:flex-row lg:flex-row lg:gap-4 justify-center items-center h-auto lg:max-h-[350px] p-4 py-8 px-8 rounded-md border shadow-lg">
-      <div class="w-full basis-[70%]">
-          <div class="heading w-full flex flex-col py-4 gap-1">
-              <div class="title text-5xl font-bold text-start text-gray-800">
-                  Youth Fellowship
-              </div>
-
-              <div class="subtitle flex justify-between mt-2 w-full lg:max-w-[400px]">
-                  <span class="sub-title text-xl  text-gray-800">LYC Ung/Boro</span>
-                  <span class="sub-title text-xl  text-gray-800">Dinner Night</span>
-              </div>
-          </div>
-
-          <div class="content mt-4 w-full">
-              <div class="details grid grid-cols-2 gap-4">
-                  <div class="flex flex-col">
-                      <div class="label text-gray-800 font-semibold">Name:</div>
-                      <div class="venue text-gray-500">Nathaniel Musa</div>
-                  </div>
-
-                  <div class="label flex flex-col">
-                      <div class="label text-gray-800 font-semibold">Date:</div>
-                      <div class="venue text-gray-500">7 febuary 2024</div>
-                  </div>
-
-                  <div class="label flex flex-col ">
-                      <div class="label text-gray-800 font-semibold">Venue:</div>
-                      <div class="venue text-gray-500">1st ECWA church Hause Ung/boro</div>
-                  </div>
-
-                  <div class="label flex flex-col ">
-                      <div class="label text-gray-800 font-semibold">Dress code:</div>
-                      <div class="venue text-gray-500">Black and white</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-
-      <div class="w-full flex justify-center basis-[30%]">
-        <qrcode [qrdata]="registrationUrl" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-      </div>
-  </div>
-
-
-  <div class="card mx-auto w-full max-w-[450px] lg:max-w-[800px] flex flex-col md:flex-row lg:flex-row lg:gap-4 justify-center items-center h-auto lg:max-h-[350px] p-4 py-8 px-8 rounded-md border shadow-lg">
-    <div class="w-full basis-[70%]">
-        <div class="heading w-full flex flex-col py-4 gap-1">
-            <div class="title text-5xl font-bold text-start text-gray-800">
-                Youth Fellowship
-            </div>
-
-            <div class="subtitle flex justify-between mt-2 w-full lg:max-w-[400px]">
-                <span class="sub-title text-xl  text-gray-800">LYC Ung/Boro</span>
-                <span class="sub-title text-xl  text-gray-800">Dinner Night</span>
-            </div>
-        </div>
-
-        <div class="content mt-4 w-full">
-            <div class="details grid grid-cols-2 gap-4">
-                <div class="flex flex-col">
-                    <div class="label text-gray-800 font-semibold">Name:</div>
-                    <div class="venue text-gray-500">Nathaniel Musa</div>
-                </div>
-
-                <div class="label flex flex-col">
-                    <div class="label text-gray-800 font-semibold">Date:</div>
-                    <div class="venue text-gray-500">7 febuary 2024</div>
-                </div>
-
-                <div class="label flex flex-col ">
-                    <div class="label text-gray-800 font-semibold">Venue:</div>
-                    <div class="venue text-gray-500">1st ECWA church Hause Ung/boro</div>
-                </div>
-
-                <div class="label flex flex-col ">
-                    <div class="label text-gray-800 font-semibold">Dress code:</div>
-                    <div class="venue text-gray-500">Black and white</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="w-full flex justify-center basis-[30%]">
-      <qrcode [qrdata]="registrationUrl" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-    </div>
-</div>
-
-
-<div class="card mx-auto w-full max-w-[450px] lg:max-w-[800px] flex flex-col md:flex-row lg:flex-row lg:gap-4 justify-center items-center h-auto lg:max-h-[350px] p-4 py-8 px-8 rounded-md border shadow-lg">
-  <div class="w-full basis-[70%]">
-      <div class="heading w-full flex flex-col py-4 gap-1">
-          <div class="title text-5xl font-bold text-start text-gray-800">
-              Youth Fellowship
-          </div>
-
-          <div class="subtitle flex justify-between mt-2 w-full lg:max-w-[400px]">
-              <span class="sub-title text-xl  text-gray-800">LYC Ung/Boro</span>
-              <span class="sub-title text-xl  text-gray-800">Dinner Night</span>
-          </div>
-      </div>
-
-      <div class="content mt-4 w-full">
-          <div class="details grid grid-cols-2 gap-4">
-              <div class="flex flex-col">
-                  <div class="label text-gray-800 font-semibold">Name:</div>
-                  <div class="venue text-gray-500">Nathaniel Musa</div>
-              </div>
-
-              <div class="label flex flex-col">
-                  <div class="label text-gray-800 font-semibold">Date:</div>
-                  <div class="venue text-gray-500">7 febuary 2024</div>
-              </div>
-
-              <div class="label flex flex-col ">
-                  <div class="label text-gray-800 font-semibold">Venue:</div>
-                  <div class="venue text-gray-500">1st ECWA church Hause Ung/boro</div>
-              </div>
-
-              <div class="label flex flex-col ">
-                  <div class="label text-gray-800 font-semibold">Dress code:</div>
-                  <div class="venue text-gray-500">Black and white</div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-
-  <div class="w-full flex justify-center basis-[30%]">
-    <qrcode [qrdata]="registrationUrl" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-  </div>
-</div>
 
 </div>

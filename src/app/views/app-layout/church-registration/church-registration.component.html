@@ -1,3 +1,4 @@
+<app-header></app-header>
 
 <p-toast/>
 <div class="section px-4 mt-11 lg:px-16">
@@ -7,7 +8,7 @@
         <div class="h-full w-full flex flex-col mt-0 md:mt-0 lg:mt-[0px]  mb-[60px]  bg-white border shadow-sm rounded-xl pointer-events-auto">
           <div class="flex justify-between items-center py-3 px-4 border-b">
             <h3 id="hs-bg-gray-on-hover-cards-label" class="font-bold text-gray-800">
-              Dinner Registration Form
+              Church Registration Form
             </h3>
             <button (click)="toggleCreateProduct()" type="button" class="size-8 inline-flex justify-center items-center gap-x-2  border border-transparent  text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none" aria-label="Close" data-hs-overlay="#hs-bg-gray-on-hover-cards">
               <span class="sr-only">Close</span>
@@ -15,7 +16,7 @@
             </button>
           </div>
 
-          <form [formGroup]="createReferalForm" (ngSubmit)="save()">
+          <form [formGroup]="createChurchForm" (ngSubmit)="save()">
             <div class="p-4 overflow-y-auto">
 
               <div>
@@ -27,25 +28,16 @@
 
                   <div>
                     <label class="block text-gray-600 text-sm font-medium">
-                      First Name
+                      Church name
                       <span class="text-red-500">*</span>
                     </label>
-                    <input formControlName="first_name" type="text" [ngClass]="{'border-red-400': isSubmitted && f.first_name.errors}" class="block w-full border px-3 py-2 bg-gray-100 focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm" placeholder="First Name">
+                    <input formControlName="full_name" type="text" [ngClass]="{'border-red-400': isSubmitted && f.full_name.errors}" class="block w-full border px-3 py-2 bg-gray-100 focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm" placeholder="First Name">
                   </div>
-
 
 
                   <div>
                     <label class="block text-gray-600 text-sm font-medium">
-                      Last Name
-                      <span class="text-red-500">*</span>
-                    </label>
-                    <input [ngClass]="{'border-red-400': isSubmitted && f.last_name.errors}" formControlName="last_name" type="text" class="block border w-full px-3 py-2 bg-gray-100  focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm" placeholder="Last Name">
-                  </div>
-
-                  <div>
-                    <label class="block text-gray-600 text-sm font-medium">
-                      Email
+                      Email (secretary)
                     </label>
                     <p class="text-red-700 mt-2 text-sm" *ngIf="isSubmitted && f.email.errors " >field required </p>
                     <input formControlName="email" [ngClass]="{'border-red-400': isSubmitted && f.email.errors}" type="text" class="block border w-full px-3 py-2 bg-gray-100 focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm" placeholder="Email">
@@ -53,25 +45,21 @@
 
                   <div>
                     <label class="block text-gray-600 text-sm font-medium">
-                      Phone number
+                      Password
+                      <span class="text-red-500">*</span>
+                    </label>
+                    <input [ngClass]="{'border-red-400': isSubmitted && f.password.errors}" formControlName="password" type="text" class="block border w-full px-3 py-2 bg-gray-100  focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm" placeholder="Last Name">
+                  </div>
+
+
+
+                  <div>
+                    <label class="block text-gray-600 text-sm font-medium">
+                      Phone number (secretary)
                       <span class="text-red-500">*</span>
                     </label>
                     <input  formControlName="phone_number" [ngClass]="{'border-red-400': isSubmitted && f.phone_number.errors}" formControlName="phone_number" type="text" class="block border w-full px-3 py-2 bg-gray-100  focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm" placeholder="Phone number">
                   </div>
-
-                  <div>
-                    <label class="block text-gray-600 text-sm font-medium">
-                      Gender
-                      <span class="text-red-500">*</span>
-                    </label>
-                    <select [ngClass]="{'border-red-400': isSubmitted && f.gender_id.errors}" formControlName="gender_id" class="block border w-full px-3 py-2 bg-gray-100 focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm">
-                      <option value="">Select gender</option>
-                      <ng-container *ngFor="let gender of gender">
-                        <option value={{gender.id}}>{{gender.name}}</option>
-                      </ng-container>
-                    </select>
-                  </div>
-
 
                 </div>
               </div>
@@ -90,7 +78,7 @@
                 <span class="text-gray-500 text-sm">Advance settings</span>
               </div>
               <button type="submit">
-                <p-button class="p-2 px-4 bg-primary rounded-sm text-white text-sm" [loading]="loading"  label="Save" ></p-button>
+                <p-button class="p-2 px-4 bg-black rounded-sm text-white text-sm" [loading]="loading"  label="Save" ></p-button>
               </button>
             </div>
           </form>

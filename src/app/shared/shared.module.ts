@@ -1,3 +1,4 @@
+import { PaginationComponent } from './pagination/pagination.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
@@ -7,6 +8,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 import { CardComponent } from './card/card.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { EmptyListComponent } from './empty-list/empty-list.component';
 
 
 
@@ -16,6 +18,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     SpinnerComponent,
     MobileMenuComponent,
     CardComponent,
+    PaginationComponent,
+    EmptyListComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +32,9 @@ import { QRCodeModule } from 'angularx-qrcode';
     HeaderComponent,
     SpinnerComponent,
     CardComponent,
+    PaginationComponent,
+    EmptyListComponent
+
   ]
 })
 export class SharedModule {

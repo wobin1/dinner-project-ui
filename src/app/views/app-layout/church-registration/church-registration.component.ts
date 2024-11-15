@@ -10,7 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   providers: [MessageService]
 })
 export class ChurchRegistrationComponent {
-  createReferalForm:any;
+  createChurchForm:any;
   isSubmitted: boolean = false;
   loading:boolean = false;
   referalId:any;
@@ -24,18 +24,15 @@ export class ChurchRegistrationComponent {
 
 
   ngOnInit(){
-    this.getPharmacyId()
-    this.getReferralId()
-    this.getGender()
-    this.createReferalForm = this.fb.group({
+    this.createChurchForm = this.fb.group({
       // Basic information
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
+      full_name: ['', Validators.required],
       email: ['', Validators.required, Validators.email],
-      pharmacy_id: [''],
+      password: ['', Validators.required],
       phone_number: ['', Validators.required],
-      gender_id: ['', Validators.required],
-      status_id: ['', Validators.required],
+      is_church: [true],
+      is_bouncer: [false],
+      is_admin: [false],
     });
 
   }
@@ -65,36 +62,26 @@ export class ChurchRegistrationComponent {
 
 
   get f() {
-    return this.createReferalForm.controls;
+    return this.createChurchForm.controls;
   }
 
   save(){
     this.isSubmitted = true;
     this.loading = true;
 
-    if(this.createReferalForm.invalid){
+    if(this.createChurchForm.invalid){
       console.log("form invalid")
       return;
     }
 
-    if (this.pharmacyId) {
-      this.createReferalForm.patchValue({ pharmacy_id: this.pharmacyId });
-    } else {
-      console.log("pharmacyId is not set");
-      this.loading = false;
-      return;
-    }
 
-    this.createReferalForm.patchValue({pharmacy_id: this.pharmacyId})
-    this.createReferalForm.patchValue({status_id: 1})
-
-    this.api.post('referals', this.createReferalForm.value).subscribe(
+    this.api.post('users', this.createChurchForm.value).subscribe(
       res=>{
         console.log(res)
         this.loading = !this.loading;
         this.isSubmitted = false;
-        this.createReferalForm.reset();
-        this.showSuccess('Referal registered successfully')
+        this.createChurchForm.reset();
+        this.showSuccess('Church registered successfully')
       },err=>{
         console.log(err);
       }
@@ -102,14 +89,6 @@ export class ChurchRegistrationComponent {
 
   }
 
-  getPharmacyId(){
-    const url = window.location.href;
-    console.log('url', url);
-    const segments = url.split('/');
-    this.pharmacyId = segments[segments.length - 1];
-    let mainUrl = window.location.origin
-    console.log('mainUrl', mainUrl);
-  }
 
 
   showSuccess(message: string) {

@@ -18,13 +18,18 @@ export class HeaderComponent {
         "route": "/app/dashboard"
       },
       {
-        "name": "tickets",
+        "name": "Tickets",
         "icon": "assets/icons/package.png",
         "route": "/app/tickets"
 
       },
       {
-        "name": "registration",
+        "name": "Registration",
+        "icon": "assets/icons/reciept.png",
+        "route": "/app/registration/1"
+      },
+      {
+        "name": "Church registration",
         "icon": "assets/icons/reciept.png",
         "route": "/app/church-registration"
       }

@@ -1,4 +1,4 @@
-<div class="flex relative  justify-between items-center py-4 bg-[#F8F9FA]  shadow-md px-16">
+<div class=" w-full flex justify-between items-center py-4 bg-[#F8F9FA]  shadow-md px-16">
   <!-- logo -->
   <div class="text-lg font-semibold flex gap-4 items-center cursor-pointer text-gray-700">
       <img src="assets/logo.png"  class="" alt="">
@@ -16,19 +16,19 @@
   </div>
 
   <div class="flex items-center gap-4" >
-     <ng-container *ngFor=" let row of ['assets/icons/settings.png', 'assets/icons/bell.png']" >
-      <span>
-        <img src={{row}} class="w-6 active:scale-95" alt="">
+     <ng-container >
+      <span (click)="showDropDown()">
+        <img src='/assets/icons/settings.png' class="w-6 active:scale-95" alt="">
       </span>
      </ng-container>
 
      <span>
       <div class=" flex flex-col w-full relative ">
         <button  enterActiveClass="fadein"   id="hs-dropdown-example" type="button">
-        <img src="assets/icons/avater.png" class="w-6 active:scale-95" alt="">lkkjkj
+        <img src="assets/icons/avater.png" class="w-6 active:scale-95" alt="">
         </button>
 
-        <div *ngIf="dropDown" (click)="route('/auth/login')" class="absolute top-7 px-4 py-1 bg-white border cursor-pointer shadow-sm">
+        <div *ngIf="dropDown" (click)="route('/auth/login')" class="absolute top-7 right-4 px-4 py-1 bg-white border cursor-pointer shadow-sm">
           logout
         </div>
       </div>

@@ -14,6 +14,14 @@ export class DashboardComponent {
     currentMonth:any;
     recentReferals:any = []
     pageLoading:boolean=false;
+    guests:any;
+    tableHeader = [
+      "Full Name",
+      "Email",
+      "Phone number",
+      "Church",
+      ""
+    ]
 
     constructor(
       private api: HttpServiceService
@@ -24,7 +32,7 @@ export class DashboardComponent {
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
 
-        this.api.get('referals/metrics').subscribe(
+        this.api.get('guests/guest-metrics').subscribe(
           res=>{
             this.metrics = res;
             console.log('metrics',this.metrics)
@@ -56,14 +64,13 @@ export class DashboardComponent {
         const date = new Date();
         this.currentMonth = date.toLocaleString('default', { month: 'long' });
 
-        this.get_recent_referals()
+        this.get_metrics()
     }
 
-    get_recent_referals(){
-      this.api.get('referals/recent').subscribe(
+    get_metrics(){
+      this.api.get('guests').subscribe(
         res=>{
-          this.recentReferals = res;
-          this.recentReferals = this.recentReferals.data
+          this.guests = res;
         }, err=>{
           console.log('Error fetching recent referals', err)
         }

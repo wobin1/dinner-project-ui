@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpServiceService } from '../../../services/http-service.service';
 
 @Component({
   selector: 'app-tickets',
@@ -8,11 +9,14 @@ import { Component } from '@angular/core';
 export class TicketsComponent {
   ticketId!: string;
   registrationUrl!: string;
+  Guests:any;
+  pageLoading:boolean = false;
 
-  constructor(){}
+  constructor(private api: HttpServiceService){}
 
   ngOnInit(){
     this.getTicketId();
+    this.getGuest();
   }
 
 
@@ -24,6 +28,26 @@ export class TicketsComponent {
     let mainUrl = window.location.origin
     console.log('mainUrl', mainUrl);
     this.registrationUrl = mainUrl + '/#/app/register-customer/' + this.ticketId
+  }
+
+  getGuest(){
+    this.pageLoading = true;
+    this.api.get('guests').subscribe(
+      res=>{
+        let guest:any = res;
+        console.log('metrics',this.Guests)
+        const baseUrl = window.location.origin;
+        this.Guests = guest.data.map((item:any) => ({
+          ...item,
+          qrcode: `${baseUrl}/app/verify/${item.id}` // Add the `prcode` field
+      }));
+      console.log('guest', this.Guests)
+      this.pageLoading=false;
+      },
+      err=>{
+        console.log('err',err)
+      }
+    )
   }
 
 }

@@ -10,13 +10,14 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class RegisterCustomerComponent {
-  createReferalForm:any;
+  createGuestForm:any;
   isSubmitted: boolean = false;
   loading:boolean = false;
-  referalId:any;
-  pharmacyId:any;
+  userId:any;
+  churches:any;
   url:any;
-  gender:any
+  church:any;
+  user:any;
 
 
 
@@ -24,18 +25,15 @@ export class RegisterCustomerComponent {
 
 
   ngOnInit(){
-    this.getPharmacyId()
-    this.getReferralId()
-    this.getGender()
-    this.createReferalForm = this.fb.group({
+    this.getChurches()
+    this.getUserId();
+    this.createGuestForm = this.fb.group({
       // Basic information
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
+      full_name: ['', Validators.required],
       email: ['', Validators.required, Validators.email],
-      pharmacy_id: [''],
+      church: [this.getUserId()],
       phone_number: ['', Validators.required],
-      gender_id: ['', Validators.required],
-      status_id: ['', Validators.required],
+      attendance_status: [1],
     });
 
   }
@@ -44,19 +42,32 @@ export class RegisterCustomerComponent {
 
   }
 
-  getReferralId(){
+  getUserId(){
     const url = window.location.href;
     console.log('url', url);
     const segments = url.split('/');
-    this.referalId = segments[segments.length - 1];
+    this.userId = segments[segments.length - 1];
+    console.log('userId', this.userId);
+    this.getUser()
+    return Number(this.userId)
   }
 
-  getGender(){
-    this.api.get('referals/gender').subscribe(
+  getUser(){
+    this.api.get('users/'+ this.userId).subscribe(
       res=>{
-        console.log(res)
-        this.gender = res
-        this.gender = this.gender.data
+        this.user = res;
+        console.log('user', this.user)
+      }, err=>{
+        console.log(err)
+      }
+    )
+  }
+
+  getChurches(){
+    this.api.get('users/churches').subscribe(
+      res=>{
+        this.churches = res;
+        console.log('churches', this.churches.data)
       }, err=>{
         console.log(err)
       }
@@ -64,51 +75,36 @@ export class RegisterCustomerComponent {
   }
 
 
+
   get f() {
-    return this.createReferalForm.controls;
+    return this.createGuestForm.controls;
   }
 
   save(){
     this.isSubmitted = true;
     this.loading = true;
 
-    if(this.createReferalForm.invalid){
+    if(this.createGuestForm.invalid){
       console.log("form invalid")
       return;
     }
 
-    if (this.pharmacyId) {
-      this.createReferalForm.patchValue({ pharmacy_id: this.pharmacyId });
-    } else {
-      console.log("pharmacyId is not set");
-      this.loading = false;
-      return;
-    }
 
-    this.createReferalForm.patchValue({pharmacy_id: this.pharmacyId})
-    this.createReferalForm.patchValue({status_id: 1})
+    console.log('createGuestForm', this.createGuestForm.value)
 
-    this.api.post('referals', this.createReferalForm.value).subscribe(
+    this.api.post('guests', this.createGuestForm.value).subscribe(
       res=>{
         console.log(res)
         this.loading = !this.loading;
         this.isSubmitted = false;
-        this.createReferalForm.reset();
-        this.showSuccess('Referal registered successfully')
+        this.createGuestForm.reset();
+        this.showSuccess('Guest registered successfully')
       },err=>{
         console.log(err);
+        this.loading = false;
       }
     )
 
-  }
-
-  getPharmacyId(){
-    const url = window.location.href;
-    console.log('url', url);
-    const segments = url.split('/');
-    this.pharmacyId = segments[segments.length - 1];
-    let mainUrl = window.location.origin
-    console.log('mainUrl', mainUrl);
   }
 
 
