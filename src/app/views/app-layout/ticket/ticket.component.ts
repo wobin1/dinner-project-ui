@@ -40,7 +40,7 @@ export class TicketComponent {
         const baseUrl = window.location.origin;
         this.Guest = guest.data.map((item:any) => ({
           ...item,
-          qrcode: `${baseUrl}/app/verify/${item.id}` // Add the `prcode` field
+          qrcode: `${baseUrl}/app/qr-checkin/${item.id}` // Add the `prcode` field
       }));
       console.log('guest', this.Guest)
       this.pageLoading=false;

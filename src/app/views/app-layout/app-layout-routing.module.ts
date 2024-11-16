@@ -20,7 +20,7 @@ const routes: Routes = [
       {path: 'tickets', component: TicketsComponent },
       {path: 'ticket/:id', component: TicketComponent },
       {path: 'church-registration', component: ChurchRegistrationComponent },
-      {path: 'qr-checkin', component: QrVerificationComponent },
+      {path: 'qr-checkin/:id', component: QrVerificationComponent },
     ]
   }
 ];
