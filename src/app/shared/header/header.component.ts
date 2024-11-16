@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,14 @@ export class HeaderComponent {
 
   dropDown:boolean = false;
   showMobileMenu:boolean = false;
+  menu:any;
+  userId:any;
 
-    menu = [
+  constructor(private router: Router, private store:StorageService){}
+
+  ngOnInit() {
+    this.userId = this.store.getJson('user').id
+    this.menu =[
       {
         "name": "dashboard",
         "icon": "assets/icons/layout.png",
@@ -26,7 +33,7 @@ export class HeaderComponent {
       {
         "name": "Registration",
         "icon": "assets/icons/reciept.png",
-        "route": "/app/registration/1"
+        "route": "/app/registration/" + this.userId
       },
       {
         "name": "Church registration",
@@ -35,10 +42,9 @@ export class HeaderComponent {
       }
     ]
 
-  constructor(private router: Router){}
-
-  ngOnInit() {
   }
+
+
 
   route(page:string){
     this.router.navigate([page]);

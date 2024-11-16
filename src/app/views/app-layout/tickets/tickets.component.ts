@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpServiceService } from '../../../services/http-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tickets',
@@ -12,7 +13,7 @@ export class TicketsComponent {
   Guests:any;
   pageLoading:boolean = false;
 
-  constructor(private api: HttpServiceService){}
+  constructor(private api: HttpServiceService, private router: Router){}
 
   ngOnInit(){
     this.getTicketId();
@@ -48,6 +49,10 @@ export class TicketsComponent {
         console.log('err',err)
       }
     )
+  }
+
+  route(id:any){
+    this.router.navigateByUrl('/app/ticket/' + id)
   }
 
 }

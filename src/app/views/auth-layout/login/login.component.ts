@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent {
   constructor(private auth: AuthService,
               private fb: FormBuilder,
               private router: Router,
+              private store: StorageService,
               private messageService: MessageService){}
 
   ngOnInit(){
@@ -49,7 +51,9 @@ export class LoginComponent {
       (res) => {
         console.log(res);
         this.loading = false;
+        let response:any = res;
         this.showSuccess('login successfull!')
+        this.store.saveJson('user', response.data)
         this.router.navigate(['/app/dashboard']);
 
       },

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { HttpServiceService } from '../../../services/http-service.service';
 
 @Component({
   selector: 'app-ticket',
@@ -10,11 +11,14 @@ import html2canvas from 'html2canvas';
 export class TicketComponent {
   ticketId!: string;
   registrationUrl!: string;
+  Guest:any;
+  pageLoading:boolean = false;
 
-  constructor(){}
+  constructor(private api: HttpServiceService){}
 
   ngOnInit(){
     this.getTicketId();
+    this.getGuest();
   }
 
   getTicketId(){
@@ -25,6 +29,26 @@ export class TicketComponent {
     let mainUrl = window.location.origin
     console.log('mainUrl', mainUrl);
     this.registrationUrl = mainUrl + '/#/app/registration/' + this.ticketId
+  }
+
+  getGuest(){
+    this.pageLoading = true;
+    this.api.get('guests/' + this.ticketId).subscribe(
+      res=>{
+        let guest:any = res;
+        console.log('metrics',this.Guest)
+        const baseUrl = window.location.origin;
+        this.Guest = guest.data.map((item:any) => ({
+          ...item,
+          qrcode: `${baseUrl}/app/verify/${item.id}` // Add the `prcode` field
+      }));
+      console.log('guest', this.Guest)
+      this.pageLoading=false;
+      },
+      err=>{
+        console.log('err',err)
+      }
+    )
   }
 
 

@@ -49,6 +49,9 @@
           <qrcode qrdata={{guest.qrcode}} [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
         </div>
     </div>
+    <div (click)="route(guest.id)" class="mx-auto w-full max-w-[450px] md:max-w-[800px] lg:max-w-[800px] flex justify-end">
+      <button class="p-2 border text-grey-500">view ticket</button>
+    </div>
     </ng-container>
 
 

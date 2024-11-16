@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div  class="section flex flex-col py-8  items-center h-screen w-full px-16">
 
   <div class="w-full flex justify-end items-end py-2">
@@ -5,7 +7,7 @@
   </div>
 
   <div id="pdfContent" class="h-fit mt-8">
-  <app-card [qrcodeContent]="registrationUrl"></app-card>
+  <app-card [guestName]="Guest[0].full_name" [qrcodeContent]="registrationUrl"></app-card>
   </div>
 
 
