@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-mobile-menu',
@@ -9,39 +10,38 @@ import { Router } from '@angular/router';
 export class MobileMenuComponent {
   @Output() toggleMenu = new EventEmitter();
 
-  menu = [
-    {
-      "name": "dashboard",
-      "icon": "assets/icons/layout.png",
-      "route": "/app/dashboard"
-    },
-    {
-      "name": "products",
-      "icon": "assets/icons/package.png",
-      "route": "/app/products"
+  menu:any;
+  userId:any;
 
-    },
-    {
-      "name": "purchases",
-      "icon": "assets/icons/reciept.png",
-      "route": "/app/purchases"
+  constructor(private router: Router, private store:StorageService){}
 
-    },
-    {
-      "name": "sales",
-      "icon": "assets/icons/cart.png",
-      "route": "/app/sales"
-    },
-    {
-      "name": "inventory plan",
-      "icon": "assets/icons/achive.png",
-      "route": "/app/inventory-tracker"
 
-    }
-  ]
+  ngOnInit(){
+    this.userId = this.store.getJson('user').id
+    this.menu =[
+      {
+        "name": "dashboard",
+        "icon": "assets/icons/layout.png",
+        "route": "/app/dashboard"
+      },
+      {
+        "name": "Tickets",
+        "icon": "assets/icons/package.png",
+        "route": "/app/tickets"
 
-  constructor(private router: Router){}
-
+      },
+      {
+        "name": "Registration",
+        "icon": "assets/icons/reciept.png",
+        "route": "/app/registration/" + this.userId
+      },
+      {
+        "name": "Church registration",
+        "icon": "assets/icons/reciept.png",
+        "route": "/app/church-registration"
+      }
+    ]
+  }
 
   route(page:string){
     this.router.navigate([page]);
