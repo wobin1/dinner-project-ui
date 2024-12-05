@@ -8,11 +8,22 @@
         </button>
       </div>
       <ng-container *ngFor="let row of menu">
-       <nav (click)="route(row.route)" class="whitespace-nowrap flex w-full gap-2 text-base text-gray-red hover:text-gray-800 active:scale-95">
+       <nav *ngIf="currentUser.is_admin" (click)="route(row.route)" class="whitespace-nowrap flex w-full gap-2 text-base text-gray-red hover:text-gray-800 active:scale-95">
          <img src={{row.icon}} class="w-6" alt="">
          {{row.name}}
        </nav>
       </ng-container>
+
+
+      <nav *ngIf="!currentUser.is_admin"  (click)="route('/app/tickets')" class="whitespace-nowrap flex w-full gap-2 text-base text-gray-red hover:text-gray-800 active:scale-95">
+        <img src="assets/icons/package.png" class="w-5" alt="">
+        Tickets
+      </nav>
+
+      <nav *ngIf="!currentUser.is_admin"  (click)="route('/app/church-registration')" class="whitespace-nowrap flex w-full gap-2 text-base text-gray-red hover:text-gray-800 active:scale-95">
+        <img src="assets/icons/package.png" class="w-5" alt="">
+        Registration
+      </nav>
      </div>
   </div>
 </div>

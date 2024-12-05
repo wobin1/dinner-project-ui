@@ -2,12 +2,18 @@
 
 <div  class="section flex flex-col py-8  items-center h-screen w-full px-16">
 
-  <div class="w-full flex justify-end items-end py-2">
+  <div class="w-full hidden md:hidden lg:flex justify-end items-end py-2">
     <button class="p-2 border" (click)="generatePDF()">Dowload ticket</button>
   </div>
 
+  <div class="w-full flex md:flex lg:hidden justify-end items-end py-2">
+    <button class="p-2 border" (click)="generateMobilePDF()">Dowload ticket</button>
+  </div>
+
+
+
   <div id="pdfContent" class="h-fit mt-8">
-  <app-card [guestName]="Guest[0].full_name" [qrcodeContent]="registrationUrl"></app-card>
+  <app-card [guestName]="Guest[0].full_name" [tableType]="Guest[0].table.type" [qrcodeContent]="registrationUrl"></app-card>
   </div>
 
 

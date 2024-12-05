@@ -62,12 +62,12 @@
                     <input  formControlName="phone_number" [ngClass]="{'border-red-400': isSubmitted && f.phone_number.errors}" formControlName="phone_number" type="text" class="block border w-full px-3 py-2 bg-gray-100  focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm" placeholder="Phone number">
                   </div>
 
-                  <div *ngIf="!user.data.is_church">
+                  <div >
                     <label class="block text-gray-600 text-sm font-medium">
                       Church
                       <span class="text-red-500">*</span>
                     </label>
-                    <select [ngClass]="{'border-red-400': isSubmitted && f.gender_id.errors}" formControlName="church" class="block border w-full px-3 py-2 bg-gray-100 focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm">
+                    <select [ngClass]="{'border-red-400': isSubmitted && f.church.errors}" formControlName="church" class="block border w-full px-3 py-2 bg-gray-100 focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm">
                       <option >Select church</option>
                       <ng-container *ngFor="let church of churches?.data">
                         <option value={{church.id}}>{{church.full_name}}</option>
@@ -75,14 +75,21 @@
                     </select>
                   </div>
 
+                  <div >
+                    <label class="block text-gray-600 text-sm font-medium">
+                      Table
+                      <span class="text-red-500">*</span>
+                    </label>
+                    <select [ngClass]="{'border-red-400': isSubmitted && f.table.errors}" formControlName="table" class="block border lowercase w-full px-3 py-2 bg-gray-100 focus:outline-none focus:ring-black-500 focus:border-black-500 sm:text-sm">
+                      <option >Select table</option>
+                      <ng-container *ngFor="let table of tables?.data">
+                        <option value={{table.id}}>{{table.type}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
 
                 </div>
               </div>
-
-
-
-
-
 
           </div>
             </div>

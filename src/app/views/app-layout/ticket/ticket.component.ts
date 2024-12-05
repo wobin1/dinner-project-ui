@@ -73,5 +73,34 @@ export class TicketComponent {
     }
   }
 
+  generateMobilePDF() {
+    // Select the HTML element to convert to PDF
+    const dataElement = document.getElementById('pdfContent');
 
+    if (dataElement) {
+        // Set the width and height of the element to match mobile view dimensions
+        const dataElement = document.getElementById('pdfContent');
+
+        if (dataElement) {
+          // Set the width of the element to match mobile view dimensions
+          dataElement.style.width = '375px'; // Example width for a mobile screen
+
+          html2canvas(dataElement, { scale: 2 }).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4'); // Create jsPDF instance
+
+            // Calculate image height in PDF pages based on canvas dimensions and A4 size
+            const imgWidth = 175; // width of A4 page in mm with margins
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+            pdf.save('download.pdf'); // Download the PDF
+          });
+        } else {
+          console.error("Element not found");
+        }
+      }
 }
+}
+
+

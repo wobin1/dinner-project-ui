@@ -67,6 +67,8 @@ export class DashboardComponent {
         this.get_metrics()
     }
 
+
+
     get_metrics(){
       this.api.get('guests').subscribe(
         res=>{

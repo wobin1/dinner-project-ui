@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class CardComponent {
   @Input() qrcodeContent!: string;
   @Input() guestName!: string;
+  @Input() tableType!: string;
 
 }

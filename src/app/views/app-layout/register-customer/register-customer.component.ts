@@ -17,6 +17,7 @@ export class RegisterCustomerComponent {
   churches:any;
   url:any;
   church:any;
+  tables:any;
   user:any;
 
 
@@ -27,12 +28,14 @@ export class RegisterCustomerComponent {
   ngOnInit(){
     this.getChurches()
     this.getUserId();
+    this.getTables();
     this.createGuestForm = this.fb.group({
       // Basic information
       full_name: ['', Validators.required],
       email: ['', Validators.required, Validators.email],
       church: [this.getUserId()],
       phone_number: ['', Validators.required],
+      table: ['', Validators.required],
       attendance_status: [1],
     });
 
@@ -74,7 +77,16 @@ export class RegisterCustomerComponent {
     )
   }
 
-
+  getTables(){
+    this.api.get('guests/tables').subscribe(
+      res=>{
+        this.tables = res;
+        console.log('tables', this.tables.data)
+      }, err=>{
+        console.log(err)
+      }
+    )
+  }
 
   get f() {
     return this.createGuestForm.controls;

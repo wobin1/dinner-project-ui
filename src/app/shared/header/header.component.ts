@@ -13,11 +13,14 @@ export class HeaderComponent {
   showMobileMenu:boolean = false;
   menu:any;
   userId:any;
+  currentUser:any;
 
   constructor(private router: Router, private store:StorageService){}
 
   ngOnInit() {
     this.userId = this.store.getJson('user').id
+    this.currentUser= this.store.getJson('user');
+    console.log('current user', this.currentUser)
     this.menu =[
       {
         "name": "dashboard",

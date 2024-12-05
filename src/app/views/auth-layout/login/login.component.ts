@@ -32,6 +32,15 @@ export class LoginComponent {
     });
   }
 
+  routeUser(userData:any){
+    console.log('routing user')
+    if(userData.is_admin){
+      this.router.navigate(['/app/dashboard']);
+    }else if(userData.is_church){
+      this.router.navigate(['/app/tickets']);
+    }
+  }
+
   get f(){return this.loginForm.controls;}
 
   login(){
@@ -54,8 +63,7 @@ export class LoginComponent {
         let response:any = res;
         this.showSuccess('login successfull!')
         this.store.saveJson('user', response.data)
-        this.router.navigate(['/app/dashboard']);
-
+        this.routeUser(response.data)
       },
       (err) => {
         console.error(err);

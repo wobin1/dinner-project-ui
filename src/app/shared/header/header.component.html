@@ -8,11 +8,25 @@
   <!-- menu -->
   <div class="flex items-center gap-8 cursor-pointer">
    <ng-container *ngFor="let row of menu">
-    <nav (click)="route(row.route)" class="whitespace-nowrap lg:flex md:hidden hidden gap-1 text-sm text-gray-500 hover:text-secondary active:scale-95">
-      <img src={{row.icon}} class="w-5" alt="">
-      {{row.name}}
-    </nav>
+    <div *ngIf="currentUser.is_admin">
+      <nav (click)="route(row.route)" class="whitespace-nowrap lg:flex md:hidden hidden gap-1 text-sm text-gray-500 hover:text-secondary active:scale-95">
+        <img src={{row.icon}} class="w-5" alt="">
+        {{row.name}}
+      </nav>
+    </div>
+
+
    </ng-container>
+
+   <nav *ngIf="!currentUser.is_admin" (click)="route('/app/tickets')" class="whitespace-nowrap lg:flex md:hidden hidden gap-1 text-sm text-gray-500 hover:text-secondary active:scale-95">
+    <img src="assets/icons/package.png" class="w-5" alt="">
+    Tickets
+  </nav>
+
+  <nav *ngIf="!currentUser.is_admin" (click)="route('/app/church-registration')" class="whitespace-nowrap lg:flex md:hidden hidden gap-1 text-sm text-gray-500 hover:text-secondary active:scale-95">
+    <img src="assets/icons/package.png" class="w-5" alt="">
+    Registration
+  </nav>
   </div>
 
   <div class="flex items-center gap-4" >

@@ -32,20 +32,20 @@
                     </div>
 
                     <div class="label flex flex-col ">
-                        <div class="label text-gray-800 font-semibold">Venue:</div>
-                        <div class="venue text-gray-500">1st ECWA church Hause Ung/boro</div>
+                        <div class="label text-gray-800 font-semibold">Church:</div>
+                        <div class="venue text-gray-500">{{guest.church.full_name}}</div>
                     </div>
 
                     <div class="label flex flex-col ">
-                        <div class="label text-gray-800 font-semibold">Dress code:</div>
-                        <div class="venue text-gray-500">Black and white</div>
+                        <div class="label text-gray-800 font-semibold">Table:</div>
+                        <div class="venue text-gray-500 lowercase">{{guest.table?.type}}</div>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="w-full flex justify-center basis-[30%]">
+        <div class="w-full flex justify-center py-2 basis-[30%]">
           <qrcode qrdata={{guest.qrcode}} [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
         </div>
     </div>
