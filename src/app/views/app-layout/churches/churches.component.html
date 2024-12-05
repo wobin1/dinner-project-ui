@@ -1,0 +1,92 @@
+<app-header></app-header>
+
+<div class="section mt-10 px-4 md:px-16 lg:px-16">
+  <!-- header section -->
+
+
+  <!-- Inventory tracker section -->
+  <div class="summary flex flex-col md:flex-col lg:flex-row gap-6 mt-6">
+    <div class="layout-1 basis-[100%] p-6 bg-gray-100/65">
+      <div class="flex gap-4 justify-between ">
+        <h4 class="text-lg font-medium text-gray-800">All Churhces</h4>
+        <!-- <span class="text-xs cursor-pointer hover:text-gray-500 active:scale-95 text-gray-600 flex items-center gap-2">
+          view detail
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </span>
+        </span> -->
+      </div>
+
+      <!-- <h5 class=" text-gray-500 mt-1 mb-8">This month ({{metrics?.data.current_month_referal_count}})</h5> -->
+
+      <div class=" gap-4 mt-2">
+        <div class="flex flex-col w-full">
+                <div class="-m-1.5 overflow-x-auto">
+                  <div class="p-1.5 min-w-full inline-block align-middle">
+                    <div class="overflow-hidden w-full">
+                      <table class="min-w-full border divide-y divide-gray-200">
+                        <thead>
+                          <tr>
+                            <ng-container *ngFor="let menu of tableHeader">
+                              <th scope="col" class="px-6 py-6 text-start text-xs font-medium text-gray-800 uppercase">{{menu}}</th>
+                            </ng-container>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 bg-white w-full">
+                          <ng-container *ngFor="let church of churchesData?.data; let i = index">
+                            <tr class="hover:bg-gray-100">
+                              <td class="px-6 py-4 whitespace-nowrap cursor-pointer text-sm text-gray-800">{{church.full_name}}</td>
+                              <td class="px-6 py-4 whitespace-nowrap cursor-pointer text-sm text-gray-500">{{church.email}}</td>
+                              <td class="px-6 py-4 whitespace-nowrap cursor-pointer text-start text-sm font-medium text-gray-500">{{church.phone_number}}</td>
+                              <td class="px-6 py-4 whitespace-nowrap cursor-pointer text-start text-sm font-medium text-gray-500">{{church.guest_count}}</td>
+                              <td class="px-6 py-4 whitespace-nowrap cursor-pointer text-start text-sm font-medium text-gray-500">
+                                <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>
+                                  </svg>
+                                </span>
+                              </td>
+                            </tr>
+
+                          </ng-container>
+                        </tbody>
+
+
+                      </table>
+
+                      <div *ngIf="churchesData?.data?.length <=0 && pageLoading" class="w-full flex justify-center items-center h-[50vh]">
+                        <app-spinner></app-spinner>
+                      </div>
+
+                      <div *ngIf="churchesData?.data?.length<=0 && !pageLoading ">
+                       <app-empty-list></app-empty-list>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+
+        <div class="flex w-full justify-end mt-8">
+          <app-pagination [currentPage]="this.churchesData?.meta?.current_page" [lastPage]="this.churchesData?.meta?.last_page"></app-pagination>
+        </div>
+       </div>
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+</div>

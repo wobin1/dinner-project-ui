@@ -15,6 +15,7 @@ import { TicketsComponent } from './tickets/tickets.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { ChurchRegistrationComponent } from './church-registration/church-registration.component';
 import { QrVerificationComponent } from './qr-verification/qr-verification.component';
+import { ChurchesComponent } from './churches/churches.component';
 
 
 
@@ -28,6 +29,7 @@ import { QrVerificationComponent } from './qr-verification/qr-verification.compo
     TicketComponent,
     ChurchRegistrationComponent,
     QrVerificationComponent,
+    ChurchesComponent,
 
   ],
   imports: [

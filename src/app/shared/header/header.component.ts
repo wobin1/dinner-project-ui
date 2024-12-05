@@ -42,6 +42,11 @@ export class HeaderComponent {
         "name": "Church registration",
         "icon": "assets/icons/reciept.png",
         "route": "/app/church-registration"
+      },
+      {
+        "name": "Churches",
+        "icon": "assets/icons/reciept.png",
+        "route": "/app/churches"
       }
     ]
 

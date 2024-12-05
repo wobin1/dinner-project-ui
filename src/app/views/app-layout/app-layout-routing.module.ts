@@ -7,6 +7,7 @@ import { TicketsComponent } from './tickets/tickets.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { ChurchRegistrationComponent } from './church-registration/church-registration.component';
 import { QrVerificationComponent } from './qr-verification/qr-verification.component';
+import { ChurchesComponent } from './churches/churches.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path: 'ticket/:id', component: TicketComponent },
       {path: 'church-registration', component: ChurchRegistrationComponent },
       {path: 'qr-checkin/:id', component: QrVerificationComponent },
+      {path: 'churches', component: ChurchesComponent },
     ]
   }
 ];
