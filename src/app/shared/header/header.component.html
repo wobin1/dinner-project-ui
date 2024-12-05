@@ -23,7 +23,7 @@
     Tickets
   </nav>
 
-  <nav *ngIf="!currentUser.is_admin" (click)="route('/app/church-registration')" class="whitespace-nowrap lg:flex md:hidden hidden gap-1 text-sm text-gray-500 hover:text-secondary active:scale-95">
+  <nav *ngIf="!currentUser.is_admin" (click)="route('/app/registration/' + userId)" class="whitespace-nowrap lg:flex md:hidden hidden gap-1 text-sm text-gray-500 hover:text-secondary active:scale-95">
     <img src="assets/icons/package.png" class="w-5" alt="">
     Registration
   </nav>
