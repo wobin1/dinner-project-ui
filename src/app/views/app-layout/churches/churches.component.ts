@@ -25,9 +25,11 @@ export class ChurchesComponent {
 
 
   getChurchesData(){
+    this.pageLoading = true;
     this.api.get('users/churches').subscribe(
       res=>{
         this.churchesData = res;
+        this.pageLoading=false;
       }, err=>{
         console.log('Error fetching recent referals', err)
       }
