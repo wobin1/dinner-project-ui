@@ -36,7 +36,7 @@ export class TicketComponent {
     this.api.get('guests/' + this.ticketId).subscribe(
       res=>{
         let guest:any = res;
-        console.log('metrics',this.Guest)
+        console.log('guest',this.Guest)
         const baseUrl = window.location.origin;
         this.Guest = guest.data.map((item:any) => ({
           ...item,

@@ -10,4 +10,9 @@ export class CardComponent {
   @Input() guestName!: string;
   @Input() tableType!: string;
 
+
+  ngOnIit(){
+    console.log('Card loaded', this.qrcodeContent, this.guestName, this.tableType)
+  }
+
 }
