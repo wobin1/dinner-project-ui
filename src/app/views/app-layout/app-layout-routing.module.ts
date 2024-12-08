@@ -17,7 +17,7 @@ const routes: Routes = [
     component: AppLayoutComponent,
     children: [
       {path: 'dashboard', component: DashboardComponent },
-      {path: 'registration/:id', component: RegisterCustomerComponent },
+      {path: 'registration/:id', component: QrVerificationComponent },
       {path: 'tickets', component: TicketsComponent },
       {path: 'ticket/:id', component: TicketComponent },
       {path: 'church-registration', component: ChurchRegistrationComponent },

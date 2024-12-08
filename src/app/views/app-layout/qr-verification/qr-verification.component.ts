@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpServiceService } from '../../../services/http-service.service';
 import { MessageService } from 'primeng/api';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-qr-verification',
@@ -10,16 +11,22 @@ import { MessageService } from 'primeng/api';
 })
 export class QrVerificationComponent {
   ticketId:any;
+  userDetail:any;
   showCheckout:boolean=false;
   showSuccessMessage:boolean=false;
   pageLoading:boolean=false;
+  action!:string;
   laoding:boolean=false;
+  showUnauthorized:boolean = false;
 
-  constructor(private api:HttpServiceService, private messageService: MessageService){}
+  constructor(private api:HttpServiceService, private storage:StorageService, private messageService: MessageService){}
 
 
   ngOnInit(){
     this.checkin(this.getTicketId());
+    this.userDetail = this.storage.getJson('user');
+    console.log('layout check', this.userDetail.bouncer);
+    this.action= ''
   }
 
   getTicketId(){
@@ -34,10 +41,19 @@ export class QrVerificationComponent {
 
     checkin(ticketId:any){
       this.pageLoading = true;
+      let userDetail = this.storage.getJson('user');
+      console.log('userDetail', userDetail.is_bouncer);
+      if(!userDetail.is_bouncer){
+        console.log('invalid bouncer')
+        this.showError('You are not authorized for checkin')
+        this.showUnauthorized = true;
+        return;
+      }
     this.api.patch('guests/checkin/' + ticketId).subscribe(
       res=>{
         console.log(res);
         this.showSuccess('user checked in successfully')
+        this.action = 'Checkin'
         this.pageLoading = false;
         this.showCheckout=false;      },
       err=>{
@@ -58,6 +74,7 @@ export class QrVerificationComponent {
       res=>{
         console.log(res);
         this.showCheckout=false;
+        this.action = 'checkout'
         this.showSuccess('user checked out successfully')
         this.laoding = false;
       },
